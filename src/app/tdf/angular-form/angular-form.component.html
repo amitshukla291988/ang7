@@ -1,0 +1,24 @@
+<form #userForm="ngForm">
+    {{userForm.value | json }}
+    <hr>
+    {{ userModel | json }}
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" required  #name="ngModel" class="form-control" [(ngModel)]="userModel.name" name="userName">
+    </div>
+    {{name.untouched}}
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="userModel.email" name="emailId">
+    </div>
+    <div ngModelGroup="address">
+        <div class="form-control">
+            <label>Country</label>
+            <input type="text" name="country" ngModel>
+        </div>
+        <div class="form-control">
+            <label>City</label>
+            <input type="text" name="city" ngModel>
+        </div>
+    </div>
+</form>

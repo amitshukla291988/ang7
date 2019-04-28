@@ -5,11 +5,12 @@ import  {TestComponent} from './test/test.component' ;
 import {EmpDetailComponent} from './emp-detail/emp-detail.component' ;
 import  {PageNotFoundComponent} from './page-not-found/page-not-found.component' ;
 import {EmpContactComponent} from './emp-contact/emp-contact.component' ;
-
+import {AngularFormComponent} from './tdf/angular-form/angular-form.component';
 
 const routes: Routes = [
 {path:'' , redirectTo:'/emp-list' , pathMatch:'full'},
 {path:'emp-list', component:EmpComponent},
+{path:'angForm', component:AngularFormComponent},
 {
     path:'emp-list/:id',
     component:EmpDetailComponent,

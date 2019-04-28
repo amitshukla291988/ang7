@@ -9,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpContactComponent } from './emp-contact/emp-contact.component';
+import { AngularFormComponent } from './tdf/angular-form/angular-form.component';
 /*import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmpDetailComponent } from './emp-detail/emp-detail.component';*/
 /*import { TestComponent } from './test/test.component';
@@ -18,7 +19,8 @@ import { EmpComponent } from './emp/emp.component';*/
   declarations: [
     AppComponent,
     routingComponents,
-    EmpContactComponent
+    EmpContactComponent,
+    AngularFormComponent
 
   ],
   imports: [
