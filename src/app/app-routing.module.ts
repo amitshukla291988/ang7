@@ -6,11 +6,13 @@ import {EmpDetailComponent} from './emp-detail/emp-detail.component' ;
 import  {PageNotFoundComponent} from './page-not-found/page-not-found.component' ;
 import {EmpContactComponent} from './emp-contact/emp-contact.component' ;
 import {AngularFormComponent} from './tdf/angular-form/angular-form.component';
+import {CalenderComponent} from './calender/calender.component';
 
 const routes: Routes = [
 {path:'' , redirectTo:'/emp-list' , pathMatch:'full'},
 {path:'emp-list', component:EmpComponent},
 {path:'angForm', component:AngularFormComponent},
+{path:'calender', component:CalenderComponent},
 {
     path:'emp-list/:id',
     component:EmpDetailComponent,
@@ -28,4 +30,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[EmpComponent,TestComponent,PageNotFoundComponent,EmpDetailComponent,EmpContactComponent]
+export const routingComponents =[EmpComponent,TestComponent,PageNotFoundComponent,EmpDetailComponent,EmpContactComponent,CalenderComponent,AngularFormComponent]
