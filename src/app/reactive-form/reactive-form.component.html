@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <h1>Reactive Form</h1>
+    {{registration.value | json }}
+    <form [formGroup]="registration" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" [class.is-invalid]="userName.touched && userName.invalid"  formControlName="userName"  class="form-control">
+<div *ngIf="userName.touched && userName.invalid">
+<small class="text-danger" *ngIf="userName.errors?.required">Username is required</small>
+<small class="text-danger" *ngIf="userName.errors?.minlength">Username must be at least 3 charactors</small>
+<small class="text-danger" *ngIf="userName.errors?.forbiddenName">{{userName.errors?.forbiddenName.value}} Username is not allowed</small>
+</div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-secondary btn-sm m-2" (click)="addAlternetEmail()" type="button">Add e-mail </button>
+            <label>Email</label>
+            <input type="email" [class.is-invalid]="userName.touched && userName.invalid"  formControlName="email"  class="form-control">
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required.</small>
+            <div formArrayName="alternetEmails" *ngFor="let email of alternetEmails.controls; let i=index">
+                <input type="text" class="form-control my-1" [formControlName]="i">
+            </div>
+        </div>
+        <div class="form-check mb-3">
+
+            <input type="checkbox" formControlName="subscriber"  class="form-check-input ">
+            <label class="form-check-label">Send me promotional offers</label>
+            <small class="text-danger" *ngIf=""></small>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="userPwd"  class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" [class.is-valid]="registration.errors?.misMatch" formControlName="userCPwd"  class="form-control">
+            <small class="text-danger" *ngIf="registration.errors?.misMatch">Password do not match</small>
+        </div>
+        <div formGroupName="address">
+            <div class="form-group">
+                <label>city</label>
+                <input type="text" class="form-control" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" formControlName="state" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <input type="text" formControlName="country" class="form-control">
+            </div>
+        </div>
+
+        <button [disabled]="!registration.valid" class="btn btn-primary" type="submit">Register</button>
+        <button class="btn btn-secondary ml-2" (click)="loadData()" type="button">Load Data</button>
+    </form>
+</div>
