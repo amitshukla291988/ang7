@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef,TemplateRef,Input} from '@angular/core';
 import {NgbDatepickerConfig,NgbDateStruct, NgbCalendar,NgbDate} from '@ng-bootstrap/ng-bootstrap';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+// import {LoginComponent} from '../include/login/login.component';
+import {EmployeeService} from '../employee.service';
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
@@ -7,6 +11,14 @@ import {NgbDatepickerConfig,NgbDateStruct, NgbCalendar,NgbDate} from '@ng-bootst
   providers: [NgbDatepickerConfig]
 })
 export class CalenderComponent implements OnInit {
+  @Input() public parentData ;
+  @ViewChild('template') modal:ElementRef;
+
+   bsModalRef: BsModalRef;
+
+
+
+
     markDisabled ;
   disableDates: NgbDateStruct[]=[
       {year:2019,month:4,day:10},
@@ -15,10 +27,16 @@ export class CalenderComponent implements OnInit {
   ];
   model: NgbDateStruct;
   date: {year: number, month: number};
+// modalRef: BsModalRef;
+//
+  constructor(private calendar: NgbCalendar,
+    config: NgbDatepickerConfig,
+    private empService:EmployeeService,
+private modalService: BsModalService
 
-  constructor(private calendar: NgbCalendar,config: NgbDatepickerConfig) {
-      config.minDate = {year: 1900, month: 1, day: 1};
-    config.maxDate = {year: 2099, month: 12, day: 31};
+    ) {
+      config.minDate = {year: 2019, month: 5, day: 1};
+    config.maxDate = {year: 2019, month: 5, day: 10};
 
     // days that don't belong to current month are not visible
     config.outsideDays = 'hidden';
@@ -37,10 +55,32 @@ export class CalenderComponent implements OnInit {
    }
 
   ngOnInit() {
+
   }
+  openFunction(){
+    this.empService.openModalWithComponent();
+  }
+// openModalWithComponent() {
+//     const initialState = {
+//       list: [
+//         'Open a modal with component',
+//         'Pass your data',
+//         'Do something else',
+//         '...'
+//       ],
+//       title: 'Modal with component'
+//     };
+//     this.bsModalRef = this.modalService.show(LoginComponent, {initialState});
+//     this.bsModalRef.content.closeBtnName = 'Close';
+//   }
+
 onDateSelection(date:NgbDate){
            console.log(date);
       alert(date.day);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
   selectToday() {

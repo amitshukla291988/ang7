@@ -5,7 +5,8 @@ import {EmployeeService} from '../employee.service';
   selector: 'app-test',
   template: `
   <input type="text" [(ngModel)]="name" value="Cult" />
-
+  {{message}}df
+<app-test1 (childEvent)="message=$event" [parentData]="siteName_"></app-test1>
   <div *ngIf="displayIf; then thenBlock ; else elseBlock"></div>
   <ng-template #thenBlock>
   <h1>then block </h1>
@@ -33,9 +34,13 @@ import {EmployeeService} from '../employee.service';
   styles: []
 })
 export class TestComponent implements OnInit {
-
+ @Output() public message = "efg";
   public siteName = "CultAthletics" ;
-
+public siteName_ = [
+                      {
+                        "test":"Amit Shukla"
+                      }
+                  ] ;
   public displayIf = false ;
   public color = "redTR" ;
   public colors = ["red","green","yellow","purpal"] ;

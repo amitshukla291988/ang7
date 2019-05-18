@@ -9,6 +9,8 @@ import {AngularFormComponent} from './tdf/angular-form/angular-form.component';
 import {CalenderComponent} from './calender/calender.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component' ;
 
+import {HeaderComponent} from './include/header/header.component';
+
 const routes: Routes = [
 {path:'' , redirectTo:'/emp-list' , pathMatch:'full'},
 {path:'emp-list', component:EmpComponent},

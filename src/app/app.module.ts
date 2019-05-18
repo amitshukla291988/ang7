@@ -8,11 +8,23 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Test1Component } from './test/test1/test1.component';
+import { HeaderComponent } from './include/header/header.component';
+import { FooterComponent } from './include/footer/footer.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginComponent } from './include/login/login.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    Test1Component,
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent
+
 
   ],
   imports: [
@@ -21,9 +33,11 @@ import { AppComponent } from './app.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
 
   ],
+entryComponents: [LoginComponent],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@ import { User } from '../user' ;
   styleUrls: ['./angular-form.component.css']
 })
 export class AngularFormComponent implements OnInit {
+    public name = "Hi, Amit Shukla";
     topics = ["PHP","IOS","NET"];
     userModel = new User('AMit Shukla','amit@gmail.com','7289057538','','Morning',true) ;
   constructor() { }

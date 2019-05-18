@@ -1,4 +1,4 @@
-<p>Simple datepicker</p>
+<p>Simple datepicker sd{{parentData}}</p>
 
 <ngb-datepicker #dp [(ngModel)]="model" [markDisabled]="markDisabled" (navigate)="date = $event.next" (select)="onDateSelection($event)"></ngb-datepicker>
 
@@ -9,6 +9,9 @@
 <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
 
 <hr/>
-
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
 <pre>Month: {{ date.month }}.{{ date.year }}</pre>
 <pre>Model: {{ model | json }}</pre>
+
+
+  <button type="button" class="btn btn-primary" (click)="openFunction()">Create modal with component</button>
