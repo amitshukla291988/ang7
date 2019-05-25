@@ -8,6 +8,7 @@ import {EmpContactComponent} from './emp-contact/emp-contact.component' ;
 import {AngularFormComponent} from './tdf/angular-form/angular-form.component';
 import {CalenderComponent} from './calender/calender.component';
 import {ReactiveFormComponent} from './reactive-form/reactive-form.component' ;
+import {ChartComponent} from './chart/chart.component';
 
 import {HeaderComponent} from './include/header/header.component';
 
@@ -26,6 +27,7 @@ const routes: Routes = [
 
 },
 {path:'test' , component:TestComponent},
+{path:'chart', component:ChartComponent},
 {path:"**" , component:PageNotFoundComponent}
 ];
 
@@ -34,4 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents =[EmpComponent,TestComponent,ReactiveFormComponent,PageNotFoundComponent,EmpDetailComponent,EmpContactComponent,CalenderComponent,AngularFormComponent]
+export const routingComponents =[ChartComponent,EmpComponent,TestComponent,ReactiveFormComponent,PageNotFoundComponent,EmpDetailComponent,EmpContactComponent,CalenderComponent,AngularFormComponent]

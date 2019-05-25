@@ -1,5 +1,5 @@
 import { Component, OnInit ,ViewChild, ElementRef,TemplateRef,Input} from '@angular/core';
-import {NgbDatepickerConfig,NgbDateStruct, NgbCalendar,NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepicker,NgbDatepickerConfig,NgbDateStruct, NgbCalendar,NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 // import {LoginComponent} from '../include/login/login.component';
@@ -13,7 +13,10 @@ import {EmployeeService} from '../employee.service';
 export class CalenderComponent implements OnInit {
   @Input() public parentData ;
   @ViewChild('template') modal:ElementRef;
-
+  @ViewChild('dp') dp;
+year_=2020 ;
+month_=2 ;
+day_=26;
    bsModalRef: BsModalRef;
 
 
@@ -26,8 +29,9 @@ export class CalenderComponent implements OnInit {
       {year:2019,month:4,day:18},
   ];
   model: NgbDateStruct;
+  //dps : NgbDatepicker ;
   date: {year: number, month: number};
-// modalRef: BsModalRef;
+  //modalRef: BsModalRef;
 //
   constructor(private calendar: NgbCalendar,
     config: NgbDatepickerConfig,
@@ -36,9 +40,9 @@ private modalService: BsModalService
 
     ) {
       config.minDate = {year: 2019, month: 5, day: 1};
-    config.maxDate = {year: 2019, month: 5, day: 10};
+    config.maxDate = {year: 2020, month: 5, day: 10};
+  // days that don't belong to current month are not visible
 
-    // days that don't belong to current month are not visible
     config.outsideDays = 'hidden';
 
     //call your service
@@ -55,8 +59,12 @@ private modalService: BsModalService
    }
 
   ngOnInit() {
-
+     this.dp.navigateTo({
+      year:this.year_,
+      month:this.month_});
+     this.selectToday();
   }
+
   openFunction(){
     this.empService.openModalWithComponent();
   }
@@ -79,11 +87,15 @@ onDateSelection(date:NgbDate){
       alert(date.day);
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
 
   selectToday() {
-    this.model = this.calendar.getToday();
+    this.model =({
+      year:2019,
+      month:9,
+      day:this.day_
+    }) //this.calendar.getToday();
   }
 }

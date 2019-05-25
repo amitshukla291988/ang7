@@ -13,8 +13,9 @@ import { HeaderComponent } from './include/header/header.component';
 import { FooterComponent } from './include/footer/footer.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './include/login/login.component';
+import { ChartComponent } from './chart/chart.component';
 
-
+ import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './include/login/login.component';
     Test1Component,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ChartComponent
 
 
   ],
@@ -34,7 +36,8 @@ import { LoginComponent } from './include/login/login.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ChartsModule
 
   ],
 entryComponents: [LoginComponent],

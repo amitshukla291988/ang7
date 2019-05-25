@@ -17,9 +17,9 @@
             <label>Email</label>
             <input type="email" [class.is-invalid]="userName.touched && userName.invalid"  formControlName="email"  class="form-control">
             <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required.</small>
-            <div formArrayName="alternetEmails" *ngFor="let email of alternetEmails.controls; let i=index">
+           <!--  <div formArrayName="alternetEmails" *ngFor="let email of alternetEmails.controls; let i=index">
                 <input type="text" class="form-control my-1" [formControlName]="i">
-            </div>
+            </div> -->
         </div>
 
         <div class="form-check mb-3">
